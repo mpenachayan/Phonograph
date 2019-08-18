@@ -50,8 +50,10 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all {
             def buildType = variant.variantData.variantConfiguration.buildType.name
-            def version = variant.versionName
-            outputFileName = "Phonograph-${buildType}_${version}.apk"
+            if (buildType.equalsIgnoreCase("release")) {
+                def version = variant.versionName
+                outputFileName = "Phonograph-${version}.apk"
+            }
         }
     }
     signingConfigs {
@@ -61,6 +63,7 @@ android {
             keyAlias getProperty(properties, 'keyAlias')
             storePassword getProperty(properties, 'storePassword')
             keyPassword getProperty(properties, 'keyPassword')
+            emailRelease getProperty(properties, 'emailRelease')
         }
     }
     buildTypes {
