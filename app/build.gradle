@@ -63,7 +63,6 @@ android {
             keyAlias getProperty(properties, 'keyAlias')
             storePassword getProperty(properties, 'storePassword')
             keyPassword getProperty(properties, 'keyPassword')
-            emailRelease getProperty(properties, 'emailRelease')
         }
     }
     buildTypes {
